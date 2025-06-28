@@ -36,7 +36,7 @@ MIGRATIONS = [
     checkpoint JSON NOT NULL,
     metadata JSON NOT NULL DEFAULT ('{}'),
     PRIMARY KEY (thread_id, checkpoint_ns, checkpoint_id)
-);""",
+) COLLATE utf8mb4_0900_ai_ci;""",
     """CREATE TABLE IF NOT EXISTS checkpoint_blobs (
     thread_id VARCHAR(150) NOT NULL,
     checkpoint_ns VARCHAR(150) NOT NULL DEFAULT '',
@@ -45,7 +45,7 @@ MIGRATIONS = [
     type VARCHAR(150) NOT NULL,
     `blob` LONGBLOB,
     PRIMARY KEY (thread_id, checkpoint_ns, channel, version)
-);""",
+) COLLATE utf8mb4_0900_ai_ci;""",
     """CREATE TABLE IF NOT EXISTS checkpoint_writes (
     thread_id VARCHAR(150) NOT NULL,
     checkpoint_ns VARCHAR(150) NOT NULL DEFAULT '',
@@ -56,7 +56,7 @@ MIGRATIONS = [
     type VARCHAR(150),
     `blob` LONGBLOB NOT NULL,
     PRIMARY KEY (thread_id, checkpoint_ns, checkpoint_id, task_id, idx)
-);""",
+) COLLATE utf8mb4_0900_ai_ci;""",
     "ALTER TABLE checkpoint_blobs MODIFY COLUMN `blob` LONGBLOB;",
     """
     CREATE INDEX checkpoints_thread_id_idx ON checkpoints (thread_id);
